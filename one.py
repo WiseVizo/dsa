@@ -7,7 +7,25 @@ def locate_num(my_list, target):
         if target == my_list[x]:
             return x
     return None
-mylist = [9, 7, 5, 4, 2, 1]
-target_ele = 6
 
-print(locate_num(mylist, target_ele))
+# sol2: pick one middle ele and chop down half of the array based on if the current number is greater or smaller or same as target
+def locate_num1(my_list, target):
+    if my_list:
+        list_start = 0
+        list_end = len(my_list)
+        while True:
+            temp_list = my_list[list_start:list_end]
+            mid_ele = temp_list[len(temp_list)//2]
+            if mid_ele == target:
+                return len(temp_list)//2
+            elif mid_ele>target:
+                list_start = len(temp_list)//2
+            elif mid_ele<target:
+                list_end = len(temp_list)//2
+            return
+    return None
+
+mylist = [9, 7, 5, 4, 2, 1]
+target_ele = 2
+
+print(locate_num1(mylist, target_ele))
