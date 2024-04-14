@@ -12,20 +12,19 @@ def locate_num(my_list, target):
 def locate_num1(my_list, target):
     if my_list:
         list_start = 0
-        list_end = len(my_list)
-        while True:
-            temp_list = my_list[list_start:list_end]
-            mid_ele = temp_list[len(temp_list)//2]
+        list_end = len(my_list) - 1
+        while list_start<=list_end:
+            mid = (list_start + list_end)//2
+            mid_ele = my_list[mid]
             if mid_ele == target:
-                return len(temp_list)//2
+                return mid
             elif mid_ele>target:
-                list_start = len(temp_list)//2
+                list_start = mid + 1
             elif mid_ele<target:
-                list_end = len(temp_list)//2
-            return
+                list_end = mid - 1   
     return None
 
 mylist = [9, 7, 5, 4, 2, 1]
-target_ele = 2
+target_ele = 7
 
 print(locate_num1(mylist, target_ele))
